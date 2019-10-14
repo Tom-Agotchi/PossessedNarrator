@@ -1,5 +1,14 @@
-@ECHO OFF
 
-cd ..\..\PySystem\PySystem\Python3
-python.exe ..\..\..\Programs\TextToSpeech\FunnStuf.py
-Pause
+@echo off
+
+setlocal
+
+set LOCAL_HOME=.\
+set PYTHON_PATH=D:\PySystem\PySystem\Python3\python.exe
+
+%PYTHON_PATH% FunnStuf.py
+
+
+endlocal
+pause
+:exit

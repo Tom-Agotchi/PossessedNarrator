@@ -17,7 +17,7 @@ tts = gTTS(text='Shit', lang='en-uk');
 # os.system(tts);
 # f.close();
 
-tts.save("good.mp3");
+#tts.save("good.mp3");
 
 
 def weightedRandomSelect( L, W ):
