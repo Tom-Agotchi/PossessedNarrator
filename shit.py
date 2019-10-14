@@ -122,14 +122,14 @@ def playMIDIshit(midiSong):
 	pygame.mixer.music.load(midiSong);
 	pygame.mixer.music.play();
 
-# def playMP3(mp3file):
-# 	pygame.init();
-# 	pygame.mixer.music.load(mp3file);
-# 	pygame.mixer.music.play();
-# 	while pygame.mixer.music.get_busy(): 
-# 		continue;
+def playMP3(mp3file):
+	pygame.init();
+	pygame.mixer.music.load(mp3file);
+	pygame.mixer.music.play();
+	while pygame.mixer.music.get_busy(): 
+		continue;
 
-def generatePianoMIDI():
+def generateMIDI():
 	mid = MidiFile(type=0);
 
 	track = MidiTrack();
@@ -145,27 +145,6 @@ def generatePianoMIDI():
 
 	mid.save('random.mid');
 
-def generateFullMIDI():
-	mid = MidiFile(type=0);
-
-	track = MidiTrack();
-
-	mid.tracks.append(track);
-
-	notes = range(10, 70);#range(40, 90);#range(20, 120);
-
-	#channel 10 reserved for percussion
-	
-	#change 'instrument' with program_change 0-127
-	for i in range(0, 200):
-		for i in range(0,15):
-			# note = random.choice(notes);
-			t=random.randint(0,15);
-			track.append(Message('program_change', channel=i, program=random.randint(0,127)));
-			track.append(Message('note_on', channel=i, note=random.choice(notes), time=t));#i*100));, velocity=random.randint(50,127)
-			track.append(Message('note_off', channel=i, note=random.choice(notes), time=(t+random.randint(1,10))*1));#, velocity=random.randint(50,127)
-
-	mid.save('random.mid');
 
 #_____________________________________________________
 speaker = win32com.client.Dispatch("SAPI.SpVoice");
@@ -173,17 +152,16 @@ speaker = win32com.client.Dispatch("SAPI.SpVoice");
 
 
 while True:
-	# generatePianoMIDI();
-	generateFullMIDI();
-	playMIDIshit('random.mid');
-	playRandomOSsound();
-	# playMP3("good.mp3");
-	rs = randomSentence();
+	# generateMIDI();
+	# playMIDIshit('random.mid');
+	# playRandomOSsound();
+	os.system("good.mp3");
+	time.sleep(2);
+	# rs = randomSentence();
 	# print( rs );
-	speakBroken( speaker, rs  );
-	# print( "finished" );
-	playRandomOSsound();
-	# time.sleep(60)
+	# speakBroken( speaker, rs  );
+	# # print( "finished" );
+	# playRandomOSsound();
 	# playMIDIshit(getOSMIDI());
 
 """
